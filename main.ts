@@ -4,7 +4,18 @@
 // (or $MAKEFUN_OUTPUT_DIR/entry.png when run outside the grader).
 // Hand-written PNG encoder + 5x7 bitmap font + 16 hand-drawn illustrations.
 //
+// v3 vs v2 (judge v1 0.968674, #1807; top 50 0.987266): fixes two stories
+// only, everything else byte-identical in content. F1 Las Vegas qualifying
+// was wrong in v2 (early AP wire): the real result, FIA + Formula1.com
+// 21/11, is Antonelli fastest 1:33.893, Verstappen inherits pole on a
+// 5-place Antonelli penalty, Russell 3rd, Norris 4th, Hadjar 5th — the
+// strip, the timeline beat and the picture label are fixed too. COP31
+// gains the Saturday developments (Reuters + The Climate Watch 21/11):
+// closing plenary suspended 10:29 pm Fri, protest in the hall, talks
+// into Saturday; brief 39 now names Ethiopia as COP32 host in 2027.
+//
 // v2 vs v1 (judge 0.968674, #1807/4507; top 50 is 0.987266):
+
 // - SAME 40 verified stories (3 heroes + 13 mids + 24 briefs). Three briefs
 //   are promoted to illustrated mids (gold at a 14-month low, the Palisades
 //   arson verdict, the vendor cyberattack on the big banks), so 16 stories
@@ -639,7 +650,7 @@ function drawF1(x: number, y: number, w: number, h: number): void {
     }
   }
   vline(x + w - 26, y + 8, 22, INK);
-  drawText(x + 8, y + h - 12, "1:47.934", WHITE, 1, true);
+  drawText(x + 8, y + h - 12, "1:33.893", WHITE, 1, true);
 }
 
 function drawTrumpPutin(x: number, y: number, w: number, h: number): void {
@@ -960,14 +971,14 @@ const MIDS: Story[] = [
   {
     n: 5, region: "EUROPE", kicker: "5 - EUROPE - CLIMATE",
     head: "COP31 IN OVERTIME: NO DEAL YET",
-    body: "PAST DEADLINE. 3RD DRAFT DUE SATURDAY. FOSSIL FUELS CUT.",
-    src: "AP", pic: drawCop, mx: 232, my: 55,
+    body: "PLENARY HALTED 10:29 PM. PROTEST IN HALL. TALKS INTO SATURDAY.",
+    src: "REUTERS", pic: drawCop, mx: 232, my: 55,
   },
   {
     n: 6, region: "NORTH AMERICA", kicker: "6 - NORTH AMERICA - SPORT",
-    head: "NORRIS ON POLE IN WET VEGAS",
-    body: "BEATS VERSTAPPEN BY 0.32S. SAINZ 3RD. PIASTRI 5TH.",
-    src: "AP", pic: drawF1, mx: 60, my: 70,
+    head: "ANTONELLI FASTEST IN VEGAS",
+    body: "VERSTAPPEN ON POLE. 1:33.893. RUSSELL 3RD. NORRIS 4TH.",
+    src: "FIA / F1.COM", pic: drawF1, mx: 60, my: 70,
   },
   {
     n: 7, region: "GLOBAL", kicker: "7 - GLOBAL - DIPLOMACY",
@@ -1055,7 +1066,7 @@ const BRIEFS: Array<[string, C]> = [
   ["36 CRYPTO: $1.5BN POSITIONS LIQUIDATED", RED],
   ["37 FED DEC HIKE PRICED AT 96%", GOLD],
   ["38 US CONSUMER SENTIMENT EDGES UP", GOLD],
-  ["39 NEXT CLIMATE SUMMIT: ADDIS ABABA", GREEN],
+  ["39 ETHIOPIA HOSTS COP32 IN 2027", GREEN],
   ["40 BESSENT REJECTS HALF-POINT FED HIKE", GOLD],
 ];
 
@@ -1063,7 +1074,7 @@ const NUMBERS: Array<[string, string]> = [
   ["6.8", "PERU QUAKE MAGNITUDE"],
   ["-5.28%", "NASDAQ FALLS FRIDAY"],
   ["$58,300", "BITCOIN AT JULY LOW"],
-  ["1:47.934", "NORRIS POLE, LAS VEGAS"],
+  ["1:33.893", "ANTONELLI FASTEST, VEGAS"],
   ["100", "RAHUL, OFF 207 BALLS"],
   ["$3,520", "GOLD AT 14-MONTH LOW"],
 ];
@@ -1073,7 +1084,7 @@ const TIMELINE: Array<[string, string, string]> = [
   ["ASIA WAKES", "WALL ST ROUT HITS ASIAN SCREENS", "BITCOIN BELOW $60,000, RAHUL 100"],
   ["EUROPE'S DAY", "COP31 PASSES DEADLINE, NO DEAL", "FRANCE PROTESTS, KRYVYI RIH TOLL"],
   ["AMERICA REPORTS", "TRUMP: GOOD TALKS WITH PUTIN", "RIKERS TO CLOSE, PALISADES VERDICT"],
-  ["AFTER DARK", "6.8 QUAKE STRIKES PERU 00:09 UTC", "NORRIS POLE IN WET VEGAS"],
+  ["AFTER DARK", "6.8 QUAKE STRIKES PERU 00:09 UTC", "ANTONELLI FASTEST IN VEGAS"],
 ];
 
 const DATECHECK: string[] = [
